@@ -119,23 +119,24 @@ inst:
 	}
   
 |	LCALL sreg ',' addr
-  {
-    outcode($1, &nullgen, $2, &$4);
-  }
+	{
+		outcode($1, &nullgen, $2, &$4);
+	}
 
 |	LCALL sreg ',' rel
-  {
-    outcode($1, &nullgen, $2, &$4);
-  }
+	{
+		outcode($1, &nullgen, $2, &$4);
+	}
 
 |	LCALL ',' addr
-  {
-    outcode($1, &nullgen, 1, &$3);
-  }
+	{
+		outcode($1, &nullgen, 1, &$3);
+	}
+
 |	LCALL ',' rel
-  {
-    outcode($1, &nullgen, 1, &$3);
-  }
+	{
+		outcode($1, &nullgen, 1, &$3);
+	}
 
 
 |	LMOVB addr ',' rreg
