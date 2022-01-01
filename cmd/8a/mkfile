@@ -1,0 +1,26 @@
+
+<../../mkfiles/mkconfig
+
+TARG=8a
+
+OFILES=\
+	y.tab.$O\
+	lex.$O\
+
+HFILES=\
+	../8c/8.out.h\
+	y.tab.h\
+	a.h\
+
+YFILES=a.y\
+
+LIBS=cc bio 9		# order is important
+
+BIN=$ROOT/$OBJDIR/bin
+
+<$ROOT/mkfiles/mkone
+
+YFLAGS=-D1 -d
+
+lex.$O:	../cc/macbody ../cc/lexbody
+

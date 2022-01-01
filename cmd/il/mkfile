@@ -1,0 +1,41 @@
+
+<../../mkfiles/mkconfig
+
+TARG=il
+TARG64=jl
+
+OFILES=\
+	asm.$O\
+	compress.$O\
+	list.$O\
+	noop.$O\
+	obj.$O\
+	optab.$O\
+	pass.$O\
+	span.$O\
+	enam.$O\
+	compat.$O\
+	elf.$O\
+	$TARGMODEL.$O\
+
+HFILES=\
+	l.h\
+	../ic/i.out.h\
+	../8l/elf.h\
+	$ROOT/include/ar.h\
+
+LIBS=bio 9	# order is important
+
+BIN=$ROOT/$OBJDIR/bin
+
+<$ROOT/mkfiles/mkone
+
+enam.$O: ../ic/enam.c
+	$CC $CFLAGS ../ic/enam.c
+elf.$O:	../8l/elf.c
+	$CC $CFLAGS ../8l/elf.c
+
+install:V:	$BIN/$TARG64
+
+$BIN/$TARG64:	$O.out
+	cp $prereq $target

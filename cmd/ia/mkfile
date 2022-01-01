@@ -1,0 +1,31 @@
+
+<../../mkfiles/mkconfig
+
+TARG=ia
+TARG64=ja
+
+OFILES=\
+	y.tab.$O\
+	lex.$O\
+
+HFILES=\
+  ../ic/i.out.h\
+	y.tab.h\
+	a.h\
+
+YFILES=a.y\
+
+LIBS=cc bio 9		# order is important
+
+BIN=$ROOT/$OBJDIR/bin
+
+<$ROOT/mkfiles/mkone
+
+YFLAGS=-D1 -d
+
+lex.$O:	../cc/macbody ../cc/lexbody
+
+install:V:	$BIN/$TARG64
+
+$BIN/$TARG64:	$O.out
+  cp $prereq $target

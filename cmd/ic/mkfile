@@ -1,0 +1,45 @@
+
+<../../mkfiles/mkconfig
+
+TARG=ic
+TARG64=jc
+
+OFILES=\
+	cgen.$O\
+	enam.$O\
+	list.$O\
+	mul.$O\
+	peep.$O\
+	pgen.$O\
+	pswt.$O\
+	reg.$O\
+	sgen.$O\
+	swt.$O\
+	txt.$O\
+	lex.$O\
+	machcap.$O\
+
+HFILES=\
+	gc.h\
+	i.out.h\
+	../cc/cc.h\
+
+LIBS=cc bio 9		# order is important
+
+BIN=$ROOT/$OBJDIR/bin
+
+<$ROOT/mkfiles/mkone
+
+
+$ROOT/$OBJDIR/lib/libcc.a:
+	cd ../cc
+	mk $MKFLAGS install
+	mk $MKFLAGS clean
+
+%.$O: ../cc/%.c
+	$CC -I. $CFLAGS ../cc/$stem.c
+
+install:V: $BIN/$TARG64
+
+$BIN/$TARG64:	$O.out
+	cp $prereq $target
