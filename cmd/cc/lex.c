@@ -2,7 +2,7 @@
 #include	"y.tab.h"
 
 #ifndef	CPP
-#define	CPP	"/bin/cpp"
+#define	CPP	"/usr/bin/cpp"
 #endif
 
 /*
@@ -256,7 +256,7 @@ compile(char *file, char **defs, int ndef)
 			if(debug['.'])
 				av[i++] = strdup("-.");
 			/* 1999 ANSI C requires recognising // comments */
-			av[i++] = strdup("-+");
+			//av[i++] = strdup("-+");
 			for(c = 0; c < ndef; c++) {
 				sprint(opt, "-D%s", defs[c]);
 				av[i++] = strdup(opt);

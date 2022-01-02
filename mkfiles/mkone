@@ -16,7 +16,7 @@ nuke:V:	nuke-std
 clean:V: clean-std
 
 $O.out:	$OFILES $libs
-	$LD $LDFLAGS -o $target $OFILES $libs $SYSLIBS
+	$LD $LDFLAGS -o $target $OFILES $libs
 
 %.$O:	$HFILES		# don't combine with following %.$O rules
 
