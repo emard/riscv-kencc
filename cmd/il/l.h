@@ -1,5 +1,4 @@
-#include	<u.h>
-#include	<libc.h>
+#include	<lib9.h>
 #include	<bio.h>
 #include	"../ic/i.out.h"
 #include	"../8l/elf.h"
@@ -333,7 +332,7 @@ void	nocache(Prog*);
 void	noops(void);
 void	nuxiinit(void);
 void	objfile(char*);
-int	ocmp(void*, void*);
+int	ocmp(const void*, const void*);
 long	opirr(int);
 Optab*	oplook(Prog*);
 long	oprrr(int);

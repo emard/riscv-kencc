@@ -19,7 +19,7 @@ char	*thestring 	= "riscv";
 
 int little;
 
-void
+int
 main(int argc, char *argv[])
 {
 	int c;
@@ -205,11 +205,12 @@ main(int argc, char *argv[])
 	if(firstp == P)
 		goto out;
 	patch();
-	if(debug['p'])
+	if(debug['p']) {
 		if(debug['1'])
 			doprof1();
 		else
 			doprof2();
+	}
 	dodata();
 	follow();
 	if(firstp == P)
@@ -589,7 +590,7 @@ histtoauto(void)
 {
 	Auto *l;
 
-	while(l = curhist) {
+	while((l = curhist)) {
 		curhist = l->link;
 		l->link = curauto;
 		curauto = l;
@@ -1138,7 +1139,7 @@ lookup(char *symb, int v)
 	int c, l;
 
 	h = v;
-	for(p=symb; c = *p; p++)
+	for(p=symb; (c = *p); p++)
 		h = h+h+h + c;
 	l = (p - symb) + 1;
 	if(h < 0)

@@ -3,6 +3,7 @@
 /*
  * fake malloc
  */
+/*
 void*
 malloc(ulong n)
 {
@@ -21,7 +22,7 @@ malloc(ulong n)
 void
 free(void *p)
 {
-	USED(p);
+	(void*)p; //	USED(p);
 }
 
 void*
@@ -36,9 +37,9 @@ calloc(ulong m, ulong n)
 }
 
 void*
-realloc(void*, ulong)
+realloc(void* n, ulong m)
 {
-	fprint(2, "realloc called\n");
+	fprint(2, "realloc called\n", n,  m);
 	abort();
 	return 0;
 }
@@ -46,7 +47,7 @@ realloc(void*, ulong)
 void
 setmalloctag(void *v, ulong pc)
 {
-	USED(v, pc);
+	(void*)v; pc; // USED(v, pc);
 }
 
 void*
@@ -54,3 +55,4 @@ mysbrk(ulong size)
 {
 	return sbrk(size);
 }
+*/
