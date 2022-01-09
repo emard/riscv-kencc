@@ -55,8 +55,11 @@ line:
 		$1->value = $3;
 	}
 |	';'
-|	inst ';'
+|	inst comma ';'
 |	error ';'
+
+comma:
+|	',' comma
 
 inst:
 	LADD imm ',' rreg
@@ -122,6 +125,14 @@ inst:
 |	LCALL sreg ',' rel
 	{
 		outcode($1, &nullgen, $2, &$4);
+	}
+|	LCALL ',' addr
+	{
+		outcode($1, &nullgen, 1, &$3);
+	}
+|	LCALL ',' rel
+	{
+		outcode($1, &nullgen, 1, &$3);
 	}
 
 |	LMOVB addr ',' rreg

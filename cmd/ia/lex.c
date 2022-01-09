@@ -3,7 +3,7 @@
 #include "a.h"
 #include "y.tab.h"
 
-void
+int
 main(int argc, char *argv[])
 {
 	char *p;
@@ -57,7 +57,7 @@ main(int argc, char *argv[])
 	}
 	if(argc > 1 && !systemtype(Windows)) {
 		nproc = 1;
-		if(p = getenv("NPROC"))
+		if((p = getenv("NPROC")))
 			nproc = atol(p);	/* */
 		c = 0;
 		nout = 0;
@@ -640,4 +640,3 @@ outhist(void)
 
 #include "../cc/lexbody"
 #include "../cc/macbody"
-#include "../cc/compat"
