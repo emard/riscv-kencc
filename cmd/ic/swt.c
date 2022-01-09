@@ -81,11 +81,12 @@ bitload(Node *b, Node *n1, Node *n2, Node *n3, Node *nn)
 		if(sh > 0)
 			gopcode(OASHL, nodconst(sh), Z, n1);
 		sh += b->type->shift;
-		if(sh > 0)
+		if(sh > 0) {
 			if(typeu[b->type->etype])
 				gopcode(OLSHR, nodconst(sh), Z, n1);
 			else
 				gopcode(OASHR, nodconst(sh), Z, n1);
+		}
 	}
 }
 
