@@ -2,6 +2,8 @@
 #include <bio.h>
 #include <ctype.h>
 
+#pragma	lib	"../cc/cc.a$O"
+
 #ifndef	EXTERN
 #define EXTERN	extern
 #endif
@@ -29,8 +31,7 @@ typedef	Rune	TRune;	/* target system type */
 #define	NTERM		10
 #define	MAXALIGN	7
 
-//#define	SIGN(n)		(1ULL<<(n-1)) // in plan9-github
-#define	SIGN(n)		((uvlong)1<<(n-1))
+#define	SIGN(n)		(1ULL<<(n-1))
 #define	MASK(n)		(SIGN(n)|(SIGN(n)-1))
 
 #define	BITS	5
@@ -523,7 +524,7 @@ extern	ulong	thash3;
 extern	ulong	thash[];
 
 /*
- *	Inferno.c/Posix.c/Nt.c
+ *	compat.c/unix.c/windows.c
  */
 int	mywait(int*);
 int	mycreat(char*, int);
@@ -541,7 +542,6 @@ void*	mysbrk(ulong);
  *	parser
  */
 int	yyparse(void);
-int	mpatof(char*, double*);
 int	mpatov(char*, vlong*);
 
 /*
@@ -557,7 +557,7 @@ int	getc(void);
 long	getr(void);
 int	getnsc(void);
 Sym*	lookup(void);
-int	main(int, char*[]);
+void	main(int, char*[]);
 void	newfile(char*, int);
 void	newio(void);
 void	pushio(void);
@@ -617,10 +617,6 @@ void	pdecl(int, Type*, Sym*);
 Decl*	push(void);
 Decl*	push1(Sym*);
 Node*	revertdcl(void);
-#undef round
-#define	round	ccround
-#undef log2
-#define	log2	cclog2
 long	round(long, int);
 int	rsametype(Type*, Type*, int, int);
 int	sametype(Type*, Type*);

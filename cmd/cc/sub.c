@@ -1150,12 +1150,11 @@ typebitor(long a, long b)
 	long c;
 
 	c = a | b;
-	if(a & b) {
+	if(a & b)
 		if((a & b) == BLONG)
 			c |= BVLONG;		/* long long => vlong */
 		else
 			warn(Z, "once is enough: %Q", a & b);
-	}
 	return c;
 }
 

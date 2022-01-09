@@ -541,15 +541,12 @@ sualign(Type *t)
 				l->offset = o;
 			} else {
 				if(l->width < 0 ||
-                                   //PAD: backport of latest plan9,
-                                   // to avoid errors about incomplete array when last field of a structure
-				   (l->width == 0 && l->down != T)){
+				   l->width == 0 && l->down != T)
 					if(l->sym)
 						diag(Z, "incomplete structure element: %s",
 							l->sym->name);
 					else
 						diag(Z, "incomplete structure element");
-				}
 				w = align(w, l, Ael1);
 				l->offset = w;
 				w = align(w, l, Ael2);
@@ -565,13 +562,12 @@ sualign(Type *t)
 		t->offset = 0;
 		w = 0;
 		for(l = t->link; l != T; l = l->down) {
-			if(l->width <= 0) {
+			if(l->width <= 0)
 				if(l->sym)
 					diag(Z, "incomplete union element: %s",
 						l->sym->name);
 				else
 					diag(Z, "incomplete union element");
-			}
 			l->offset = 0;
 			l->shift = 0;
 			o = align(align(0, l, Ael1), l, Ael2);
@@ -1350,7 +1346,7 @@ tmerge(Type *t1, Sym *s)
 	Type *ta, *tb, *t2;
 
 	t2 = s->type;
-/*print("merge	%T; %T\n", t1, t2);/ * */
+/*print("merge	%T; %T\n", t1, t2);/**/
 	for(;;) {
 		if(t1 == T || t2 == T || t1 == t2)
 			break;

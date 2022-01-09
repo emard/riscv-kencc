@@ -573,8 +573,8 @@ bcomplex(Node *n, Node *c)
 	}
 	if(c != Z && n->op == OCONST && deadheads(c))
 		return 1;
-	if(newvlongcode && typev[n->type->etype] && machcap(Z)) {
-		nod = znode;
+	/* this is not quite right yet, so ignore it for now */
+	if(0 && newvlongcode && typev[n->type->etype] && machcap(Z)) {
 		b = &nod;
 		b->op = ONE;
 		b->left = n;
@@ -582,8 +582,7 @@ bcomplex(Node *n, Node *c)
 		*b->right = *nodconst(0);
 		b->right->type = n->type;
 		b->type = types[TLONG];
-		xcom(b);
-		boolgen(b, 1, Z);
+		cgen(b, Z);
 		return 0;
 	}
 	bool64(n);
