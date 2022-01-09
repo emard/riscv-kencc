@@ -567,8 +567,8 @@ naddr(Node *n, Adr *a)
 			a->type = D_FCONST;
 			a->dval = n->fconst;
 		} else {
-			v = (long)n->vconst;
-			if(thechar == 'j' && (vlong)v != n->vconst) {
+			// catch true vlongs and sign extensions (FIXME signed vlong)
+			if(thechar == 'j' && (n->vconst & 0xffffffff80000000ull)) {
 				a->type = D_VCONST;
 				*(vlong*)a->sval = n->vconst;
 			} else {
