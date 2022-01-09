@@ -3,7 +3,6 @@
 /*
  * fake malloc
  */
-/*
 void*
 malloc(ulong n)
 {
@@ -55,4 +54,3 @@ mysbrk(ulong size)
 {
 	return sbrk(size);
 }
-*/

@@ -130,7 +130,7 @@ dodata(void)
 			continue;
 		if(p->from.type != D_CONST && p->from.type != D_VCONST)
 			continue;
-		if((s = p->from.sym)) {
+		if(s = p->from.sym) {
 			if(!debug['r'])
 				continue;
 			t = s->type;
@@ -584,7 +584,7 @@ vconshift(vlong constant)
 		constant >>= 1;
 	}
 	w = (long)constant;
-	constant = shift > 12? (vlong)w << (shift - 12) : (vlong)w >> (12 - shift);
+	constant = shift > 12? (vlong)w << shift - 12 : (vlong)w >> 12 - shift;
 	if(constant != orig)
 		return -1;
 	return shift;

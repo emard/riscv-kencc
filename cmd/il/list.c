@@ -199,10 +199,10 @@ Sconv(Fmt *fp)
 	p = str;
 	for(i=0; i<sizeof(long); i++) {
 		c = a[i] & 0xff;
-		if((c >= 'a' && c <= 'z') ||
-		   (c >= 'A' && c <= 'Z') ||
-		   (c >= '0' && c <= '9') ||
-		   (c == ' ' || c == '%')) {
+		if(c >= 'a' && c <= 'z' ||
+		   c >= 'A' && c <= 'Z' ||
+		   c >= '0' && c <= '9' ||
+		   c == ' ' || c == '%') {
 			*p++ = c;
 			continue;
 		}
