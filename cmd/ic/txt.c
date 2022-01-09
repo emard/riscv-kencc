@@ -4,7 +4,7 @@ static long ncast64[];
 
 extern void ccmain(int, char**);
 
-int
+void
 main(int argc, char **argv)
 {
 	char *p;

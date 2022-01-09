@@ -43,6 +43,7 @@ IMPORTFILES=\
 	fmtvprint.$O\
 	fprint.$O\
 	getfields.$O\
+	nan64.$O\
 	nulldir.$O\
 	pow10.$O\
 	print.$O\
