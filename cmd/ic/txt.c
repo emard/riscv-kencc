@@ -390,7 +390,7 @@ err:
 	nodreg(n, tn, 0);
 	return;
 out0:
-	lasti++;
+	//lasti++;
 	if(lasti >= 5)
 		lasti = 0;
 out:
