@@ -390,11 +390,12 @@ pragpack(void)
 	}
 	while(getnsc() != '\n')
 		;
-	if(debug['f'])
+	if(debug['f']) {
 		if(packflg)
 			print("%4ld: pack %d\n", lineno, packflg);
 		else
 			print("%4ld: pack off\n", lineno);
+	}
 }
 
 void
@@ -412,11 +413,12 @@ pragfpround(void)
 	}
 	while(getnsc() != '\n')
 		;
-	if(debug['f'])
+	if(debug['f']) {
 		if(fproundflg)
 			print("%4ld: fproundflg %d\n", lineno, fproundflg);
 		else
 			print("%4ld: fproundflg off\n", lineno);
+	}
 }
 
 void
@@ -434,11 +436,12 @@ pragprofile(void)
 	}
 	while(getnsc() != '\n')
 		;
-	if(debug['f'])
+	if(debug['f']) {
 		if(profileflg)
 			print("%4ld: profileflg %d\n", lineno, profileflg);
 		else
 			print("%4ld: profileflg off\n", lineno);
+	}
 }
 
 void

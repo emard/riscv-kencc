@@ -31,4 +31,4 @@ YFILES=cc.y\
 mac.$O: macbody
 
 lex.$O:	lex.c
-	$CC $CFLAGS '-DCPP="/bin/cpp"' lex.c
+	$CC $CFLAGS '-DCPP="/usr/bin/cpp"' lex.c

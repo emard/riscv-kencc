@@ -64,7 +64,7 @@ bnum(Bits a)
 	long b;
 
 	for(i=0; i<BITS; i++)
-		if(b = a.b[i])
+		if((b = a.b[i]))
 			return 32*i + bitno(b);
 	diag(Z, "bad in bnum");
 	return 0;

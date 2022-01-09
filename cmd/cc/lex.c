@@ -2,7 +2,7 @@
 #include	"y.tab.h"
 
 #ifndef	CPP
-#define	CPP	"/bin/cpp"
+#define	CPP	"/usr/bin/cpp"
 #endif
 
 /*
@@ -34,7 +34,7 @@
  */
 
 void
-main(int argc, char *argv[])
+ccmain(int argc, char *argv[])
 {
 	char **defs, **np, *p;
 	int nproc, nout, status, i, c, ndef, maxdef;
@@ -178,7 +178,7 @@ compile(char *file, char **defs, int ndef)
 	if(outfile == 0) {
 		outfile = p;
 		if(outfile) {
-			if(p = utfrrune(outfile, '.'))
+			if((p = utfrrune(outfile, '.')))
 				if(p[1] == 'c' && p[2] == 0)
 					p[0] = 0;
 			p = utfrune(outfile, 0);
@@ -195,7 +195,7 @@ compile(char *file, char **defs, int ndef)
 			outfile = "/dev/null";
 	}
 
-	if(p = getenv("INCLUDE")) {
+	if((p = getenv("INCLUDE"))) {
 		setinclude(p);
 	} else {
 		if(systemtype(Plan9)) {
@@ -213,8 +213,8 @@ compile(char *file, char **defs, int ndef)
 	if((debug['a'] || debug['Z']) && !debug['n']) {
 		if (first) {
 			outfile = 0;
-			Binit(&outbuf, dup(1, -1), OWRITE);
-			dup(2, 1);
+			Binit(&outbuf, mydup(1, -1), OWRITE);
+			mydup(2, 1);
 		}
 	} else {
 		c = mycreat(outfile, 0664);
@@ -256,7 +256,7 @@ compile(char *file, char **defs, int ndef)
 			if(debug['.'])
 				av[i++] = strdup("-.");
 			/* 1999 ANSI C requires recognising // comments */
-			av[i++] = strdup("-+");
+			//av[i++] = strdup("-+");
 			for(c = 0; c < ndef; c++) {
 				sprint(opt, "-D%s", defs[c]);
 				av[i++] = strdup(opt);
@@ -922,7 +922,7 @@ mpatov(char *s, vlong *v)
 	c = *s;
 	if(c == '0')
 		goto oct;
-	while(c = *s++) {
+	while((c = *s++)) {
 		if(c >= '0' && c <= '9')
 			nn = n*10 + c-'0';
 		else
@@ -938,7 +938,7 @@ oct:
 	c = *s;
 	if(c == 'x' || c == 'X')
 		goto hex;
-	while(c = *s++) {
+	while((c = *s++)) {
 		if(c >= '0' || c <= '7')
 			nn = n*8 + c-'0';
 		else
@@ -951,7 +951,7 @@ oct:
 
 hex:
 	s++;
-	while(c = *s++) {
+	while((c = *s++)) {
 		if(c >= '0' && c <= '9')
 			c += 0-'0';
 		else
@@ -1397,7 +1397,7 @@ Tconv(Fmt *fp)
 			sprint(s, "(%T", t1);
 			if(strlen(str) + strlen(s) < STRINGSZ)
 				strcat(str, s);
-			while(t1 = t1->down) {
+			while((t1 = t1->down)) {
 				sprint(s, ", %T", t1);
 				if(strlen(str) + strlen(s) < STRINGSZ)
 					strcat(str, s);

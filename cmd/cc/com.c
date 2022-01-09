@@ -1047,7 +1047,7 @@ loop:
 				break;
 		}
 		if(nocast(l->type, n->type) &&
-		   (!typefd[l->type->etype] || typeu[l->type->etype] && typeu[n->type->etype])) {
+		   (!typefd[l->type->etype] || (typeu[l->type->etype] && typeu[n->type->etype]))) {
 			l->type = n->type;
 			*n = *l;
 		}
@@ -1056,11 +1056,12 @@ loop:
 	case OCOND:
 		ccom(l);
 		ccom(r);
-		if(l->op == OCONST)
+		if(l->op == OCONST) {
 			if(vconst(l) == 0)
 				*n = *r->right;
 			else
 				*n = *r->left;
+		}
 		break;
 
 	case OREGISTER:

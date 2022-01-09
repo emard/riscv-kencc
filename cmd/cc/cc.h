@@ -2,7 +2,8 @@
 #include <bio.h>
 #include <ctype.h>
 
-#pragma	lib	"../cc/cc.a$O"
+// for round() and log2()
+#pragma clang diagnostic ignored "-Wincompatible-library-redeclaration"
 
 #ifndef	EXTERN
 #define EXTERN	extern
@@ -557,7 +558,7 @@ int	getc(void);
 long	getr(void);
 int	getnsc(void);
 Sym*	lookup(void);
-void	main(int, char*[]);
+int	main(int, char*[]);
 void	newfile(char*, int);
 void	newio(void);
 void	pushio(void);

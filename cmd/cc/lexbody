@@ -174,7 +174,7 @@ lookup(void)
 	int c, l;
 
 	h = 0;
-	for(p=symb; c = *p; p++)
+	for(p=symb; (c = *p); p++)
 		h = h+h+h + c;
 	l = (p - symb) + 1;
 	if(h < 0)
@@ -635,12 +635,13 @@ prfile(long l)
 				n++;
 				continue;
 			}
-			if(n > 0 && n < HISTSZ)
+			if(n > 0 && n < HISTSZ) {
 				if(a[n-1].offset == 0) {
 					a[n] = *h;
 					n++;
 				} else
 					a[n-1] = *h;
+			}
 			continue;
 		}
 		n--;
