@@ -29,10 +29,10 @@ immbits(int v, char *permute)
 	return r;
 }
 
-long
+int32_t
 asmcjmp(int a, Prog *p, int first)
 {
-	long v;
+	int32_t v;
 
 	if(p->cond == P)
 		v = 0;
@@ -46,7 +46,7 @@ asmcjmp(int a, Prog *p, int first)
 int
 asmcbz(int a, Prog *p, int first)
 {
-	long v;
+	int32_t v;
 	int r;
 
 	r = p->reg;
@@ -116,7 +116,7 @@ asmcstore(Prog *p, int a, uint len, uint maxoff)
 int
 asmcompressed(Prog *p, Optab *o, int r, int first)
 {
-	long v;
+	int32_t v;
 	int a;
 
 	switch(o->ctype){

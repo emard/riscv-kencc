@@ -499,13 +499,13 @@ zaddr(char *bp, Adr *a, int s)
 		break;
 
 	case D_VCONST:
-		l = *(long*)a->sval;
+		l = *(int32_t*)a->sval;
 		bp[0] = l;
 		bp[1] = l>>8;
 		bp[2] = l>>16;
 		bp[3] = l>>24;
 		bp += 4;
-		l = *((long*)a->sval + 1);
+		l = *((int32_t*)a->sval + 1);
 		bp[0] = l;
 		bp[1] = l>>8;
 		bp[2] = l>>16;

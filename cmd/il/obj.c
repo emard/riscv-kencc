@@ -235,7 +235,7 @@ void
 loadlib(void)
 {
 	int i;
-	long h;
+	int32_t h;
 	Sym *s;
 
 loop:
@@ -267,7 +267,7 @@ errorexit(void)
 void
 objfile(char *file)
 {
-	long off, esym, cnt, l;
+	int32_t off, esym, cnt, l;
 	int f, work;
 	Sym *s;
 	char magbuf[SARMAG];
@@ -377,7 +377,7 @@ int
 zaddr(uchar *p, Adr *a, Sym *h[])
 {
 	int i, c;
-	long l;
+	int32_t l;
 	Sym *s;
 	Auto *u;
 
@@ -560,7 +560,7 @@ addlib(char *obj)
 }
 
 void
-addhist(long line, int type)
+addhist(int32_t line, int type)
 {
 	Auto *u;
 	Sym *s;
@@ -661,9 +661,9 @@ readsome(int f, uchar *buf, uchar *good, uchar *stop, int max)
 }
 
 void
-ldobj(int f, long c, char *pn)
+ldobj(int f, int32_t c, char *pn)
 {
-	long ipc;
+	int32_t ipc;
 	Prog *p, *t;
 	uchar *bloc, *bsize, *stop;
 	Sym *h[NSYM], *s, *di;
@@ -744,7 +744,7 @@ loop:
 			sig = 1729;
 		if(sig != 0){
 			if(s->sig != 0 && s->sig != sig)
-				diag("incompatible type signatures %lux(%s) and %lux(%s) for %s", s->sig, filen[s->file], sig, pn, s->name);
+				diag("incompatible type signatures %lux(%s) and %lux(%s) for %s", (long)s->sig, filen[s->file], (long)sig, pn, s->name);
 			s->sig = sig;
 			s->file = files-1;
 		}
@@ -1135,7 +1135,7 @@ lookup(char *symb, int v)
 {
 	Sym *s;
 	char *p;
-	long h;
+	int32_t h;
 	int c, l;
 
 	h = v;
@@ -1187,7 +1187,7 @@ void
 gethunk(void)
 {
 	char *h;
-	long nh;
+	int32_t nh;
 
 	nh = NHUNK;
 	if(thunk >= 5L*NHUNK) {
@@ -1209,7 +1209,7 @@ void
 doprof1(void)
 {
 	Sym *s;
-	long n;
+	int32_t n;
 	Prog *p, *q;
 
 	if(debug['v'])
@@ -1454,7 +1454,7 @@ nuxiinit(void)
 }
 
 int
-find1(long l, int c)
+find1(int32_t l, int c)
 {
 	char *p;
 	int i;
@@ -1466,11 +1466,11 @@ find1(long l, int c)
 	return 0;
 }
 
-long
+int32_t
 ieeedtof(Ieee *ieeep)
 {
 	int exp;
-	long v;
+	int32_t v;
 
 	if(ieeep->h == 0)
 		return 0;

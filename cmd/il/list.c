@@ -65,7 +65,7 @@ Dconv(Fmt *fp)
 {
 	char str[STRINGSZ];
 	Adr *a;
-	long v;
+	int32_t v;
 
 	a = va_arg(fp->args, Adr*);
 	switch(a->type) {
@@ -111,7 +111,7 @@ Dconv(Fmt *fp)
 		break;
 
 	case D_CTLREG:
-		sprint(str, "CSR(0x%lx)", a->offset);
+		sprint(str, "CSR(0x%lx)", (long)a->offset);
 		break;
 
 	case D_BRANCH:	/* botch */
@@ -123,9 +123,9 @@ Dconv(Fmt *fp)
 				sprint(str, "%.5lux(BRANCH)", v);
 		} else
 			if(a->sym != S)
-				sprint(str, "%s+%ld(APC)", a->sym->name, a->offset);
+				sprint(str, "%s+%ld(APC)", a->sym->name, (long)a->offset);
 			else
-				sprint(str, "%ld(APC)", a->offset);
+				sprint(str, "%ld(APC)", (long)a->offset);
 		break;
 
 	case D_FCONST:
@@ -154,35 +154,35 @@ Nconv(Fmt *fp)
 		break;
 
 	case D_NONE:
-		sprint(str, "%ld", a->offset);
+		sprint(str, "%ld", (long)a->offset);
 		break;
 
 	case D_EXTERN:
 		if(s == S)
-			sprint(str, "%ld(SB)", a->offset);
+			sprint(str, "%ld(SB)", (long)a->offset);
 		else
-			sprint(str, "%s+%ld(SB)", s->name, a->offset);
+			sprint(str, "%s+%ld(SB)", s->name, (long)a->offset);
 		break;
 
 	case D_STATIC:
 		if(s == S)
-			sprint(str, "<>+%ld(SB)", a->offset);
+			sprint(str, "<>+%ld(SB)", (long)a->offset);
 		else
-			sprint(str, "%s<>+%ld(SB)", s->name, a->offset);
+			sprint(str, "%s<>+%ld(SB)", s->name, (long)a->offset);
 		break;
 
 	case D_AUTO:
 		if(s == S)
-			sprint(str, "%ld(SP)", a->offset);
+			sprint(str, "%ld(SP)", (long)a->offset);
 		else
-			sprint(str, "%s-%ld(SP)", s->name, -a->offset);
+			sprint(str, "%s-%ld(SP)", s->name, (long)-a->offset);
 		break;
 
 	case D_PARAM:
 		if(s == S)
-			sprint(str, "%ld(FP)", a->offset);
+			sprint(str, "%ld(FP)", (long)a->offset);
 		else
-			sprint(str, "%s+%ld(FP)", s->name, a->offset);
+			sprint(str, "%s+%ld(FP)", s->name, (long)a->offset);
 		break;
 	}
 
@@ -197,7 +197,7 @@ Sconv(Fmt *fp)
 
 	a = va_arg(fp->args, char*);
 	p = str;
-	for(i=0; i<sizeof(long); i++) {
+	for(i=0; i<sizeof(int32_t); i++) {
 		c = a[i] & 0xff;
 		if((c >= 'a' && c <= 'z') ||
 		   (c >= 'A' && c <= 'Z') ||

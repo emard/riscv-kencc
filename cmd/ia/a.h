@@ -29,7 +29,7 @@ struct	Sym
 {
 	Sym*	link;
 	char*	macro;
-	long	value;
+	int32_t	value;
 	ushort	type;
 	char	*name;
 	char	sym;
@@ -74,8 +74,8 @@ struct	Hist
 {
 	Hist*	link;
 	char*	name;
-	long	line;
-	long	offset;
+	int32_t	line;
+	int32_t	offset;
 };
 #define	H	((Hist*)0)
 
@@ -99,22 +99,22 @@ EXTERN	char*	include[NINCLUDE];
 EXTERN	Io*	iofree;
 EXTERN	Io*	ionext;
 EXTERN	Io*	iostack;
-EXTERN	long	lineno;
+EXTERN	int32_t	lineno;
 EXTERN	int	nerrors;
-EXTERN	long	nhunk;
+EXTERN	int32_t	nhunk;
 EXTERN	int	ninclude;
 EXTERN	int	nosched;
 EXTERN	Gen	nullgen;
 EXTERN	char*	outfile;
 EXTERN	int	pass;
 EXTERN	char*	pathname;
-EXTERN	long	pc;
+EXTERN	int32_t	pc;
 EXTERN	int	peekc;
 EXTERN	int	sym;
 EXTERN	char	symb[NSYMB];
 EXTERN	int	thechar;
 EXTERN	char*	thestring;
-EXTERN	long	thunk;
+EXTERN	int32_t	thunk;
 EXTERN	Biobuf	obuf;
 
 void*	alloc(long);

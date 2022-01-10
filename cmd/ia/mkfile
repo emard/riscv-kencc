@@ -29,3 +29,7 @@ install:V:	$BIN/$TARG64
 
 $BIN/$TARG64:	$O.out
   cp $prereq $target
+
+clean:V:
+	rm -f *.o y.*
+
