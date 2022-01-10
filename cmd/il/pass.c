@@ -174,7 +174,7 @@ dodata(void)
 					p->link = p1;
 					continue;
 				}
-				sprint(literal, "$%llux", vv);
+				sprint(literal, "$%ux", vv);
 			} else {
 				if(!debug['r'])
 					continue;
@@ -188,7 +188,7 @@ dodata(void)
 				if((v & (BIG-1)) == 0)
 					continue;
 				/* size should be 9 max */
-				sprint(literal, "$%lux", v);
+				sprint(literal, "$%ux", v);
 			}
 		}
 		s = lookup(literal, 0);
