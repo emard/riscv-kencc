@@ -440,9 +440,9 @@ zaddr(uchar *p, Adr *a, Sym *h[])
 		a->vval = (vlong*)hunk;
 		nhunk -= 8;
 		hunk += 8;
-		*(long*)a->vval = p[4] | (p[5]<<8) |
+		*(uint32_t *)a->vval = p[4] | (p[5]<<8) |
 			(p[6]<<16) | (p[7]<<24);
-		*((long*)a->vval + 1) = p[8] | (p[9]<<8) |
+		*((uint32_t *)a->vval + 1) = p[8] | (p[9]<<8) |
 			(p[10]<<16) | (p[11]<<24);
 		c += 8;
 		break;

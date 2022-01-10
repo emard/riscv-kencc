@@ -498,7 +498,7 @@ raddr(Node *n, Prog *p)
 void
 naddr(Node *n, Adr *a)
 {
-	long v;
+	int32_t v;
 
 	a->type = D_NONE;
 	if(n == Z)
@@ -567,8 +567,8 @@ naddr(Node *n, Adr *a)
 			a->type = D_FCONST;
 			a->dval = n->fconst;
 		} else {
-			// catch true vlongs and sign extensions (FIXME signed vlong)
-			if(thechar == 'j' && (n->vconst & 0xffffffff80000000ull)) {
+			v = (int32_t)(n->vconst);
+			if(thechar == 'j' && (vlong)v != n->vconst) {
 				a->type = D_VCONST;
 				*(vlong*)a->sval = n->vconst;
 			} else {

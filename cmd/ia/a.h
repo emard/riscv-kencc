@@ -61,7 +61,7 @@ EXTERN	struct
 struct	Gen
 {
 	Sym	*sym;
-	long	offset;
+	int32_t	offset;
 	short	type;
 	short	reg;
 	short	name;
