@@ -37,7 +37,7 @@ $ROOT/$OBJDIR/lib/libcc.a:
 	mk $MKFLAGS clean
 
 %.$O: ../cc/%.c
-	$CC -I. -g $CFLAGS ../cc/$stem.c
+	$CC -I. $CFLAGS ../cc/$stem.c
 
 install:V: $BIN/$TARG64
 
