@@ -195,7 +195,7 @@ EXTERN union
 #define	cbuf	u.obuf
 #define	xbuf	u.ibuf
 
-EXTERN	int32_t	HEADR;			/* length of header */
+EXTERN	long	HEADR;			/* length of header */
 EXTERN	int	HEADTYPE;		/* type of header */
 EXTERN	xlong	INITDAT;		/* data location */
 EXTERN	xlong	INITRND;		/* data round above text location */
@@ -204,7 +204,7 @@ EXTERN	xlong	INITTEXTP;		/* text location (physical) */
 EXTERN	char*	INITENTRY;		/* entry point */
 EXTERN	int32_t	autosize;
 EXTERN	Biobuf	bso;
-EXTERN	int32_t	bsssize;
+EXTERN	long	bsssize;
 EXTERN	int	cbc;
 EXTERN	uchar*	cbp;
 EXTERN	int	cout;
@@ -213,7 +213,7 @@ EXTERN	Auto*	curhist;
 EXTERN	Prog*	curp;
 EXTERN	Prog*	curtext;
 EXTERN	Prog*	datap;
-EXTERN	int32_t	datsize;
+EXTERN	long	datsize;
 EXTERN	char	debug[128];
 EXTERN	Prog*	etextp;
 EXTERN	Prog*	firstp;

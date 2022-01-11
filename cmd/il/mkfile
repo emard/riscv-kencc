@@ -32,8 +32,9 @@ BIN=$ROOT/$OBJDIR/bin
 
 enam.$O: ../ic/enam.c
 	$CC $CFLAGS ../ic/enam.c
-elf.$O:	../8l/elf.c
-	$CC $CFLAGS ../8l/elf.c
+
+#elf.$O:	../8l/elf.c
+#	$CC $CFLAGS ../8l/elf.c
 
 install:V:	$BIN/$TARG64
 
