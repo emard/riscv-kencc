@@ -24,7 +24,7 @@ elfident(int bo, int class)
 	}
 	else{
 		cput(0);		/* osabi = SYSV */
-		cput(0);		/* abiversion = 3 */
+		cput(0);		/* abiversion = 0 */
 	}
 	strnput("", 7);
 }
@@ -234,7 +234,7 @@ elf64(int mach, int bo, int addpsects, void (*putpsects)(Putl))
 		putll(HEADR+textsize+datsize+symsize); /* offset to 1st shdr */
 	else
 		putll(0);
-	putl(0L);			/* flags */
+	putl(5L);			/* flags */
 	putw(Ehdr64sz);
 	putw(Phdr64sz);
 	putw(3 + addpsects);		/* # of Phdrs */

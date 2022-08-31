@@ -46,7 +46,8 @@ ccmain(int argc, char *argv[])
 	arginit();
 
 	profileflg = 1;	/* #pragma can turn it off */
-	tufield = simplet((1L<<tfield->etype) | BUNSIGNED);
+	i = (1L<<tfield->etype); if(i&BVLONG) i |= BLONG; /* XXX pnr */
+	tufield = simplet(i | BUNSIGNED);
 	maxdef = 0;
 	ndef = 0;
 	outfile = 0;

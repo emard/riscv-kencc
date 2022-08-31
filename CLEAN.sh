@@ -7,10 +7,17 @@ cd lib9
 $BIN/mk nuke
 cd ../libbio
 $BIN/mk nuke
+cd ../libmach
+$BIN/mk nuke
 cd ..
 
 # Clean our own version of yacc
 cd tools/yacc
+$BIN/mk nuke
+cd ../..
+
+# Clean our own version of ar
+cd tools/ar
 $BIN/mk nuke
 cd ../..
 

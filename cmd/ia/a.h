@@ -29,7 +29,7 @@ struct	Sym
 {
 	Sym*	link;
 	char*	macro;
-	int32_t	value;
+	long	value;
 	ushort	type;
 	char	*name;
 	char	sym;

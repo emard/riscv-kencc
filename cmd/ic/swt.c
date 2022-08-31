@@ -93,7 +93,7 @@ bitload(Node *b, Node *n1, Node *n2, Node *n3, Node *nn)
 void
 bitstore(Node *b, Node *n1, Node *n2, Node *n3, Node *nn)
 {
-	long v;
+	int v; /* XXX for 32 bit fields */
 	Node nod, *l;
 	int sh;
 

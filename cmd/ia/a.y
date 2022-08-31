@@ -276,6 +276,7 @@ inst:
 
 |	LWORD imm
 	{
+		$2.type = D_CONST;
 		outcode($1, &nullgen, NREG, &$2);
 	}
 

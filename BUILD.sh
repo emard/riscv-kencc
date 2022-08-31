@@ -13,10 +13,17 @@ cd lib9
 $BIN/mk install
 cd ../libbio
 $BIN/mk install
+cd ../libmach
+$BIN/mk install
 cd ..
 
 # Build our own version of yacc
 cd tools/yacc
+$BIN/mk install
+cd ../..
+
+## Build our own version of ar
+cd tools/ar
 $BIN/mk install
 cd ../..
 

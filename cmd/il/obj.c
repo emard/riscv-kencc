@@ -12,7 +12,7 @@ char	thechar		= 'i';
 char	*thestring 	= "riscv";
 
 /*
- *	-H1						is headerless
+ *	-H1				is headerless
  *	-H2 -T4128 -R4096		is plan9 format
  *	-H5 -T0x4000A0 -R4		is elf executable
  */
@@ -258,6 +258,7 @@ errorexit(void)
 {
 
 	if(nerrors) {
+		Bflush(&bso);
 		if(cout >= 0)
 			remove(outfile);
 		exits("error");
@@ -278,7 +279,8 @@ objfile(char *file)
 
 	if(file[0] == '-' && file[1] == 'l') {
 		if(debug['9'])
-			sprint(name, "/%s/lib/lib", thestring);
+			// XXX sprint(name, "/%s/lib/lib", thestring);
+			sprint(name, "lib", thestring);
 		else
 			sprint(name, "/usr/%clib/lib", thechar);
 		strcat(name, file+2);
@@ -550,7 +552,6 @@ addlib(char *obj)
 		diag("too many autolibs; skipping %s", name);
 		return;
 	}
-
 	p = malloc(strlen(name) + 1);
 	strcpy(p, name);
 	library[libraryp] = p;
@@ -1486,8 +1487,10 @@ ieeedtof(Ieee *ieeep)
 			exp++;
 		}
 	}
-	if(exp <= -126 || exp >= 130)
-		diag("double fp to single fp overflow");
+	if(exp <= -126 || exp >= 130) {
+//		diag("double fp to single fp overflow");
+printf("ovfw = %g\n", ieeedtod(ieeep));
+}
 	v |= ((exp + 126) & 0xffL) << 23;
 	v |= ieeep->h & 0x80000000L;
 	return v;

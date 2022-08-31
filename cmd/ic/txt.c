@@ -60,7 +60,7 @@ ginit(void)
 	cases = C;
 	firstp = P;
 	lastp = P;
-	tfield = types[TLONG];
+	tfield = types[TVLONG];
 
 	if(thechar == 'j'){
 		typeword = typechlvp;
