@@ -64,7 +64,7 @@ typedef struct Proc Proc;
  * math module dtoa
  */
 //#include <machine/endian.h>
-#define __LITTLE_ENDIAN
+//#define __LITTLE_ENDIAN
 
 #define	USED(x)		if(x){}else{}
 #define	SET(x)
