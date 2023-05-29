@@ -24,6 +24,7 @@
 #include <setjmp.h>
 #include <float.h>
 #include <time.h>
+#include <stdint.h>
 
 #define nil		((void*)0)
 
